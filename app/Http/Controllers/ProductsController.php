@@ -33,7 +33,9 @@ class ProductsController extends Controller
     }
 
     public function edit(Produto $produto){
-        dd($produto);
+        return view('produtos.add',[
+            'prod' => $produto,
+        ]);
     }
 
     public function view(Produto $produto){
