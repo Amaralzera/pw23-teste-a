@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 //route::get('/tes{algo?}', function($algo = null){
   //  return "<h1>MACACO</h1> - {$algo}";
@@ -39,3 +39,7 @@ Route::post('/produtos/add',[ProductsController::class, 'addSave'])->name('produ
 route::get('/produtos/{produto  }', [ProductsController::class, 'view'])->name('produtos.view');
 
 route::get('/produtos/edit/{produto}',[ProductsController::class, 'edit'])->name('produtos.edit');
+
+route::post('/produtos/edit/{produto}',[ProductsController::class, 'editSave'])->name('produtos.editSave');
+
+route::get('/produtos/delete/{produto}', [ProductsController::class, 'delete'])->name('produtos.delete');

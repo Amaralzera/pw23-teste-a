@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductsController extends Controller
 {
@@ -29,7 +30,7 @@ class ProductsController extends Controller
         ]);
 
         Produto::create($dados);
-        return redirect()->route('produtos');
+        return redirect()->route('produtos')->with('sucesso', 'Produto inserido com sucesso');
     }
 
     public function edit(Produto $produto){
@@ -44,4 +45,26 @@ class ProductsController extends Controller
         ]);
 
     }
+
+    public function editSave(Request $form, Produto $produto){
+        $dados = $form->validate([
+
+        'name' => [
+            'required',
+            Rule::unique('produtos')->ignore($produto->id),
+            'min:3',
+        ],
+        'price' => 'required|numeric|min:0',
+        'quantify' => 'required|integer|min:0'
+
+        ]);
+        $produto->fill($dados)->save();
+        return redirect()->route('produtos')->with('sucesso', 'Produto alterado com sucesso');
+
+
+}
+public function deleteForReal(produto $produto){
+
+}
+
 }

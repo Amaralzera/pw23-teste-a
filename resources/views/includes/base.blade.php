@@ -9,7 +9,12 @@
 <body>
 
         <h1>ASMEI</h1>
-        <hr>
+        <div>
+            <ul>
+                <li><a href="{{ route('home')}}">casa do Farrapos DO FARRAPAO</a></li>
+                <li><a href="{{route ('produtos')}}">Produtos</a></li>
+            </ul>
+        </div>
         @yield('content')
 </body>
 </html>

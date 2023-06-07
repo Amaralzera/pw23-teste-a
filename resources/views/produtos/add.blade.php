@@ -3,7 +3,7 @@
 @section('title', 'produtos - Adicionar')
 
 @section('content')
- <h2>adicione seu produto</h2>
+<marquee> <h2>adicione seu produto</h2>
  @if ($errors)
         @foreach ( $errors->all() as $err)
         {{ $err }} <br>
@@ -12,16 +12,19 @@
 
  @endif
 
-  <form action="{{ route('produtos.addSave')}}" method="post">
+
+<form action="{{ url()->current() }}"
+    method="post">
+
  @csrf
-    <input type="text" name="name" placeholder="nome do produto" value="{{ old  ('name')}}">
+    <input type="text" name="name" placeholder="nome do produto" value="{{ old  ('name', $prod->name ?? '')}}">
     <br>
     <input type="number" name="price" step="0.01"
-    placeholder="Preço" value="{{ old  ('price')}}">
+    placeholder="Preço" value="{{ old  ('price', $prod->price ?? '')}}">
     <br>
     <input type="number" name="quantify"
-    placeholder="quantidade" value="{{ old  ('quantify')}}">
+    placeholder="quantidade" value="{{ old  ('quantify' , $prod->quantify ?? '')    }}">
     <hr>
-    <marquee> <input type="submit" value="Gravar"></marquee>
+     <input type="submit" value="Gravar"></marquee>
 </form>
 @endsection
