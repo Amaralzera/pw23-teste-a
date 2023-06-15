@@ -9,7 +9,8 @@ use Illuminate\Validation\Rule;
 class ProductsController extends Controller
 {
     public function index(){
-        $prods = Produto::all();
+        $prods = Produto::onlyTrashed()->get();
+        #$prods = Produto::all();
         return view('produtos.index', [
             'prods' => $prods,
         ]);
@@ -63,8 +64,15 @@ class ProductsController extends Controller
 
 
 }
-public function deleteForReal(produto $produto){
+public function delete(Produto $produto){
+    return view('produtos.delete', [
+        'prod' => $produto,
+    ]);
+}
 
+public function deleteForReal(produto $produto){
+    $produto->delete();
+    return redirect()->route('produtos')->with('sucesso, Produto apagado!');
 }
 
 }

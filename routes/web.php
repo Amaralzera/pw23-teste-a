@@ -36,10 +36,12 @@ Route::get('/produtos/add', [ProductsController::class, 'add'])->name('produtos.
 
 Route::post('/produtos/add',[ProductsController::class, 'addSave'])->name('produtos.addSave');
 
-route::get('/produtos/{produto  }', [ProductsController::class, 'view'])->name('produtos.view');
+Route::get('/produtos/{produto}', [ProductsController::class, 'view'])->name('produtos.view');
 
-route::get('/produtos/edit/{produto}',[ProductsController::class, 'edit'])->name('produtos.edit');
+Route::get('/produtos/edit/{produto}',[ProductsController::class, 'edit'])->name('produtos.edit');
 
-route::post('/produtos/edit/{produto}',[ProductsController::class, 'editSave'])->name('produtos.editSave');
+Route::post('/produtos/edit/{produto}',[ProductsController::class, 'editSave'])->name('produtos.editSave');
 
-route::get('/produtos/delete/{produto}', [ProductsController::class, 'delete'])->name('produtos.delete');
+Route::get('/produtos/delete/{produto}', [ProductsController::class, 'delete'])->name('produtos.delete');
+
+Route::delete('/produtos/delete/{produto}', [ProductsController::class, 'deleteForReal'])->name('produtos.deleteForReal');
