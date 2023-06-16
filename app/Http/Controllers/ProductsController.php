@@ -9,8 +9,8 @@ use Illuminate\Validation\Rule;
 class ProductsController extends Controller
 {
     public function index(){
-        $prods = Produto::onlyTrashed()->get();
-        #$prods = Produto::all();
+        //$prods = Produto::onlyTrashed()->get();
+        $prods = Produto::all();
         return view('produtos.index', [
             'prods' => $prods,
         ]);
@@ -26,7 +26,7 @@ class ProductsController extends Controller
         $dados = $form->validate([
             'name' => 'required|unique:produtos|min:3',
             'price' => 'required|numeric|min:0',
-            'quantify' => 'required|integer|min:0'
+            'quantify' => 'required|integer|min:0',
 
         ]);
 
