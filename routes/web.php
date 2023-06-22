@@ -40,6 +40,8 @@ Route::get('/produtos/{produto}', [ProductsController::class, 'view'])->name('pr
 
 Route::get('/produtos/edit/{produto}',[ProductsController::class, 'edit'])->name('produtos.edit');
 
+Route::post('/produtos', [ProductsController::class, 'index']);
+
 Route::post('/produtos/edit/{produto}',[ProductsController::class, 'editSave'])->name('produtos.editSave');
 
 Route::get('/produtos/delete/{produto}', [ProductsController::class, 'delete'])->name('produtos.delete');
