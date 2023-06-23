@@ -18,12 +18,11 @@ class ProdutoFactory extends Factory
     {
         $names = [
             'bone', 'chapéu', 'camiseta', 'bermuda',
-            'calça', 'tênis',
+            'calça', 'tênis', 'cachorro',
         ];
 
         return [
             'name' => $this->faker->randomElement($names),
-            'name' => $this->faker->word,
             'price' => $this->faker->randomFloat(2, 1, 5000),
             'quantify' => $this->faker->numberBetween(1, 1000),
         ];
